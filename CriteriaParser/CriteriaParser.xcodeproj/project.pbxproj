@@ -11,8 +11,8 @@
 		84AA08FE23B0B8E60062B6E2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA08FD23B0B8E60062B6E2 /* HomeViewController.m */; };
 		84AA090123B0C21D0062B6E2 /* ScanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA090023B0C21D0062B6E2 /* ScanTableViewCell.m */; };
 		84AA090423B0C4AF0062B6E2 /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA090323B0C4AF0062B6E2 /* NetworkHelper.m */; };
-		84BFF47F23B0D90400F7B5BB /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DFFB5023B08F3A008861D6 /* info.plist */; };
 		84BFF48123B0E98800F7B5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AA08F823B0B7CF0062B6E2 /* LaunchScreen.storyboard */; };
+		84BFF4C423B1F2CE00F7B5BB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF4C323B1F2CD00F7B5BB /* Info.plist */; };
 		84DFFACD23ACE66E008861D6 /* CriteriaParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFFACC23ACE66E008861D6 /* CriteriaParserTests.m */; };
 		84DFFAD823ACE66E008861D6 /* CriteriaParserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFFAD723ACE66E008861D6 /* CriteriaParserUITests.m */; };
 		84DFFB4A23B08E8B008861D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DFFB4023B08E8B008861D6 /* Assets.xcassets */; };
@@ -48,6 +48,7 @@
 		84AA090223B0C4AF0062B6E2 /* NetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkHelper.h; sourceTree = "<group>"; };
 		84AA090323B0C4AF0062B6E2 /* NetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkHelper.m; sourceTree = "<group>"; };
 		84BFF48023B0E04D00F7B5BB /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		84BFF4C323B1F2CD00F7B5BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84DFFAAD23ACE66B008861D6 /* CriteriaParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CriteriaParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DFFAC823ACE66E008861D6 /* CriteriaParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CriteriaParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DFFACC23ACE66E008861D6 /* CriteriaParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriteriaParserTests.m; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		84DFFB4223B08E8B008861D6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84DFFB4323B08E8B008861D6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84DFFB4523B08E8B008861D6 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		84DFFB5023B08F3A008861D6 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				84DFFB4223B08E8B008861D6 /* main.m */,
-				84DFFB5023B08F3A008861D6 /* info.plist */,
 				84DFFB3F23B08E8B008861D6 /* AppDelegate.h */,
+				84BFF4C323B1F2CD00F7B5BB /* Info.plist */,
 				84DFFB4323B08E8B008861D6 /* AppDelegate.m */,
 				84DFFB4523B08E8B008861D6 /* SceneDelegate.h */,
 				84DFFB4123B08E8B008861D6 /* SceneDelegate.m */,
@@ -285,8 +285,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BFF4C423B1F2CE00F7B5BB /* Info.plist in Resources */,
 				84BFF48123B0E98800F7B5BB /* LaunchScreen.storyboard in Resources */,
-				84BFF47F23B0D90400F7B5BB /* info.plist in Resources */,
 				84AA08FA23B0B7CF0062B6E2 /* Home.storyboard in Resources */,
 				84DFFB4A23B08E8B008861D6 /* Assets.xcassets in Resources */,
 			);
@@ -489,7 +489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E59R2H2BZQ;
-				INFOPLIST_FILE = CriteriaParser/SupportingFiles/info.plist;
+				INFOPLIST_FILE = CriteriaParser/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E59R2H2BZQ;
-				INFOPLIST_FILE = CriteriaParser/SupportingFiles/info.plist;
+				INFOPLIST_FILE = CriteriaParser/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
