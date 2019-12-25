@@ -10,32 +10,7 @@
 
 @implementation NetworkHelper
 
-- (void)refresh {
-    
-    [self getConfigData:^(NSString *dataString, NSError *error) {
-        
-        NSError *err = nil;
-        if (!dataString) {
-            NSLog(@"FATAL ERROR : No Response for Config Data");
-            return;
-        }
-        
-        NSData *convertedData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-        if (convertedData == nil) {
-            NSLog(@"FATAL ERROR : Could not parse Config Data");
-            return;
-        }
-        
-        NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:convertedData options:NSJSONReadingMutableContainers error:&err];
-        
-        if (err) {
-            NSLog(@"Config Could not be parsed as json: %@", err.description);
-        }
-    }];
-    
-}
-
-- (void)getConfigData:(void (^)(NSString *dataString, NSError *error))completion {
++ (void)getConfigData:(void (^)(NSString *dataString, NSError *error))completion {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     

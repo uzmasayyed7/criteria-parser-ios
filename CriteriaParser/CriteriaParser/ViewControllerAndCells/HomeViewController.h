@@ -10,8 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *scansTableView;
 
 @end
 

@@ -151,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				84DFFB4223B08E8B008861D6 /* main.m */,
-				84DFFB3F23B08E8B008861D6 /* AppDelegate.h */,
 				84BFF4C323B1F2CD00F7B5BB /* Info.plist */,
+				84DFFB3F23B08E8B008861D6 /* AppDelegate.h */,
 				84DFFB4323B08E8B008861D6 /* AppDelegate.m */,
 				84DFFB4523B08E8B008861D6 /* SceneDelegate.h */,
 				84DFFB4123B08E8B008861D6 /* SceneDelegate.m */,

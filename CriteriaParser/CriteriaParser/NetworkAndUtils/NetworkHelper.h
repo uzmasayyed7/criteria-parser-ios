@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define CONFIG_URL @"https://mp-android-challenge.herokuapp.com/data"
-
 @interface NetworkHelper : NSObject
 
-- (void)getConfigData:(void (^)(NSString *dataString, NSError *error))completion;
++ (void)getConfigData:(void (^)(NSString *dataString, NSError *error))completion;
 
 @end
 
