@@ -12,7 +12,8 @@
 //Netwrok Calls
 #define CONFIG_URL @"https://mp-android-challenge.herokuapp.com/data"
 
-//Config file Stirng Constants
+//Config file String Constants
+//Config file keys
 #define ID_STRING @"id"
 #define NAME_STRING @"name"
 #define TAG_STRING @"tag"
@@ -27,6 +28,14 @@
 #define MIN_VALUE_STRING @"min_value"
 #define MAX_VALUE_STRING @"max_value"
 #define DEFAULT_VALUE_STRING @"default_value"
+
+//Config file values
+#define GREEN @"green"
+#define RED @"red"
+#define PLAIN_TEXT @"plain_text"
+#define VARIABLE @"variable"
+#define INDICATOR @"indicator"
+#define VALUE @"value"
 
 //UIColor
 #define BACKGROUND_COLOR_HEX @""

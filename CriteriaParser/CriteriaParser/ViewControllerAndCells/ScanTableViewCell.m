@@ -19,6 +19,8 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    [self.nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
+    [self.tagLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0]];
 }
 
 @end

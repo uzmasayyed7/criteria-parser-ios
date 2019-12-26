@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "NetworkHelper.h"
 #import "ScanTableViewCell.h"
+#import "IndividualScanViewController.h"
 
 @interface HomeViewController ()
 
@@ -18,15 +19,21 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(void)viewWillAppear:(BOOL)animated{
     //Get config data
     [self refresh];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     //Set table view delegate
     self.scansTableView.delegate = self;
     self.scansTableView.dataSource = self;
     
+    
+    //Remove extra separators from tableview
+    self.scansTableView.tableFooterView = [UIView new];
 }
 
 - (void)refresh {
@@ -85,10 +92,10 @@
     
     [[scanCell nameLabel] setText:self.configData[row][NAME_STRING]];
     [[scanCell tagLabel] setText:self.configData[row][TAG_STRING]];
-    if ([self.configData[row][COLOR_STRING] isEqualToString:@"red"]) {
+    if ([self.configData[row][COLOR_STRING] isEqualToString:RED]) {
         [[scanCell tagLabel] setTextColor:[UIColor redColor]];
     }
-    else if ([self.configData[row][COLOR_STRING] isEqualToString:@"green"]) {
+    else if ([self.configData[row][COLOR_STRING] isEqualToString:GREEN]) {
         [[scanCell tagLabel] setTextColor:[UIColor greenColor]];
     }
     
@@ -99,14 +106,15 @@
     return 80;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger row = indexPath.row;
+    
+    //Initialize next page
+    IndividualScanViewController *nextPage = [[UIStoryboard storyboardWithName:@"IndividualScan" bundle:nil] instantiateViewControllerWithIdentifier:@"individualScanViewController"];
+    [nextPage setCriteriaData:self.configData[row]];
+    
+    [self.navigationController pushViewController:nextPage animated:YES];
+    
 }
-*/
 
 @end
