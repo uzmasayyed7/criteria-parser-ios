@@ -67,7 +67,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 70;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,45 +82,52 @@
     
     NSString *type = self.criteriaList[0][TYPE_STRING];
     if ([type isEqualToString:PLAIN_TEXT]) {
-        [criteriaCell.criteriaTextLabel setText:[NSString stringWithFormat:@"%@",self.criteriaList[row][TEXT_STRING]]];
+        [criteriaCell.criteriaTextView setText:[NSString stringWithFormat:@"%@",self.criteriaList[row][TEXT_STRING]]];
     }
     else if ([type isEqualToString:VARIABLE]){
         NSAttributedString *labelText = [self getTextForRow:row andString:self.criteriaList[row][TEXT_STRING]];
-        [criteriaCell.criteriaTextLabel setAttributedText:labelText];
+        [criteriaCell.criteriaTextView setAttributedText:labelText];
     }
     
     criteriaCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [criteriaCell.criteriaTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
     
-    //Add tap gesture on links
-//    criteriaCell.criteriaTextLabel.userInteractionEnabled = YES;
-//    [criteriaCell.criteriaTextLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)]];
+    //Set text view delegate
+    criteriaCell.criteriaTextView.delegate = self;
     
     return criteriaCell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger row = indexPath.row;
-    
-//    CriteriaTableViewCell *currentCell = [self.criteriaListTableView cellForRowAtIndexPath:indexPath];
-//    NSAttributedString *text = currentCell.criteriaTextLabel.attributedText;
-//    NSRange *range = [currentCell selec]
-//    NSDictionary *atributes = [text attributesAtIndex:<#(NSUInteger)#> effectiveRange:<#(nullable NSRangePointer)#>];
-//    NSLog(text);
-    
-//    OptionsListViewController *listVC = [[UIStoryboard storyboardWithName:@"OptionsList" bundle:nil] instantiateViewControllerWithIdentifier:@"optionsListViewController"];
-//    [listVC setOptionsList:self.criteriaList[row][VARIABLE_STRING][@"$1"][VALUES_STRING]];
-//
-//    [self.navigationController pushViewController:listVC animated:YES];
-    
-    
-    SetParameterViewController *indicatorPage = [[UIStoryboard storyboardWithName:@"SetParameter" bundle:nil] instantiateViewControllerWithIdentifier:@"setParameterViewController"];
-    [indicatorPage setIndicatorData:self.criteriaList[row][VARIABLE_STRING][@"$1"]];
+#pragma mark - TextView delegates
 
-    [self.navigationController pushViewController:indicatorPage animated:YES];
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction{
+    
+    NSString *type = [textView.attributedText attribute:@"typeOfContent" atIndex:characterRange.location effectiveRange:&characterRange];
+    
+    NSLog(@"%@", [textView.attributedText attribute:@"optionsData" atIndex:characterRange.location effectiveRange:&characterRange]);
+    NSLog(@"%@", [textView.attributedText attribute:@"typeOfContent" atIndex:characterRange.location effectiveRange:&characterRange]);
+    
+    if ([type isEqualToString:VALUE]) {
+        NSMutableArray *optionsList = [textView.attributedText attribute:@"optionsData" atIndex:characterRange.location effectiveRange:&characterRange];
+        
+        OptionsListViewController *listVC = [[UIStoryboard storyboardWithName:@"OptionsList" bundle:nil] instantiateViewControllerWithIdentifier:@"optionsListViewController"];
+        [listVC setOptionsList:optionsList];
+        
+        [self.navigationController pushViewController:listVC animated:YES];
+    }
+    else if ([type isEqualToString:INDICATOR]){
+        NSMutableDictionary *indicatorData = [textView.attributedText attribute:@"optionsData" atIndex:characterRange.location effectiveRange:&characterRange];
+        
+        SetParameterViewController *indicatorPage = [[UIStoryboard storyboardWithName:@"SetParameter" bundle:nil] instantiateViewControllerWithIdentifier:@"setParameterViewController"];
+        [indicatorPage setIndicatorData:indicatorData];
+        
+        [self.navigationController pushViewController:indicatorPage animated:YES];
+    }
+    return NO;
 }
 
-#pragma mark
 
+#pragma mark
 -(NSAttributedString *) getTextForRow:(NSInteger)row andString:(NSString *)variableString{
     NSArray *variableList = [self.criteriaList[row][VARIABLE] allKeys];
     NSMutableAttributedString *resultString;
@@ -130,18 +137,25 @@
     for (int i=0; i<[variableList count]; i++) {
         variable = variableList[i];
         value = [self getValueForVariable:variable atRow:row];
+        NSString *type = self.criteriaList[row][VARIABLE][variable][TYPE_STRING];
         
         //Set blue color to variable value
         if (!resultString) {
             resultString = [[NSMutableAttributedString alloc] initWithString:variableString];
         }
         
-        NSDictionary *linkAttributes = @{ NSForegroundColorAttributeName : [UIColor colorWithRed:0.05 green:0.4 blue:0.65 alpha:1.0],
-                                          NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle), @"variable" : variable };
-        
+        //Add link to variables
         NSRange range = [resultString.mutableString rangeOfString:variable];
         [resultString replaceCharactersInRange:range withString:value];
-        [resultString addAttributes: linkAttributes range:[resultString.mutableString rangeOfString:value]];
+        [resultString addAttribute:NSLinkAttributeName value:value range:[resultString.mutableString rangeOfString:value]];
+        [resultString addAttribute:@"typeOfContent" value:type range:[resultString.mutableString rangeOfString:value]];
+        
+        if ([type isEqualToString:VALUE]) {
+            [resultString addAttribute:@"optionsData" value:self.criteriaList[row][VARIABLE][variable][VALUES_STRING] range:[resultString.mutableString rangeOfString:value]];
+        }
+        else if([type isEqualToString:INDICATOR]) {
+            [resultString addAttribute:@"optionsData" value:self.criteriaList[row][VARIABLE][variable] range:[resultString.mutableString rangeOfString:value]];
+        }
         
     }
     return resultString;
@@ -157,26 +171,5 @@
     }
     return nil;
 }
-
-- (void)handleTapOnLabel:(UITapGestureRecognizer *)tapGesture{
-    
-}
-//- (void)handleTapOnLabel:(UITapGestureRecognizer *)tapGesture{
-//    CGPoint locationOfTouchInLabel = [tapGesture locationInView:tapGesture.view];
-//    CGSize labelSize = tapGesture.view.bounds.size;
-//    CGRect textBoundingBox = [self.layoutManager usedRectForTextContainer:self.textContainer];
-//    CGPoint textContainerOffset = CGPointMake((labelSize.width - textBoundingBox.size.width) * 0.5 - textBoundingBox.origin.x,
-//                                              (labelSize.height - textBoundingBox.size.height) * 0.5 - textBoundingBox.origin.y);
-//    CGPoint locationOfTouchInTextContainer = CGPointMake(locationOfTouchInLabel.x - textContainerOffset.x,
-//                                                         locationOfTouchInLabel.y - textContainerOffset.y);
-//    NSInteger indexOfCharacter = [self.layoutManager characterIndexForPoint:locationOfTouchInTextContainer
-//                                                            inTextContainer:self.textContainer
-//                                   fractionOfDistanceBetweenInsertionPoints:nil];
-//    NSRange linkRange = NSMakeRange(14, 4); // it's better to save the range somewhere when it was originally used for marking link in attributed string
-//    if (NSLocationInRange(indexOfCharacter, linkRange)) {
-//        // Open an URL, or handle the tap on the link in any other way
-//        NSLog(@"link clicked: %@",linkRange);
-//    }
-//}
 
 @end

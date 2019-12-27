@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CriteriaTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *criteriaTextLabel;
+@property (weak, nonatomic) IBOutlet UITextView *criteriaTextView;
 
 @end
 

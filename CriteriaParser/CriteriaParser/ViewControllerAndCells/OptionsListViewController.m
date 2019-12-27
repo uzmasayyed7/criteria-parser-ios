@@ -21,6 +21,9 @@
     
     self.optionsListTableView.delegate = self;
     self.optionsListTableView.dataSource = self;
+    
+    //Remove extra separators from tableview
+    self.optionsListTableView.tableFooterView = [UIView new];
 }
 
 #pragma mark - Options list table view delegate

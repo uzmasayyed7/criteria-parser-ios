@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IndividualScanViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface IndividualScanViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UIView *headerView;

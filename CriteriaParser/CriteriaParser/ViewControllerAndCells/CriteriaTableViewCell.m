@@ -14,9 +14,9 @@
     [super awakeFromNib];
     
     // Configure the view for the selected state
-    [self.criteriaTextLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
-    self.criteriaTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.criteriaTextLabel.numberOfLines = 2;
+    self.criteriaTextView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.criteriaTextView.editable = NO;
+    self.criteriaTextView.selectable = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
