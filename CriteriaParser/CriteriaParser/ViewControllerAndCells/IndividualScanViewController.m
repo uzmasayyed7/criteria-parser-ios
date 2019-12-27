@@ -9,6 +9,8 @@
 #import "IndividualScanViewController.h"
 #import "Constants.h"
 #import "CriteriaTableViewCell.h"
+#import "OptionsListViewController.h"
+#import "SetParameterViewController.h"
 
 @interface IndividualScanViewController ()
 
@@ -48,6 +50,7 @@
     else if ([self.criteriaData[COLOR_STRING] isEqualToString:GREEN]) {
         [self.tagLabel setTextColor:[UIColor greenColor]];
     }
+    
 }
 
 #pragma mark - Criteria list table view delegate
@@ -86,8 +89,37 @@
         [criteriaCell.criteriaTextLabel setAttributedText:labelText];
     }
     
+    criteriaCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    //Add tap gesture on links
+//    criteriaCell.criteriaTextLabel.userInteractionEnabled = YES;
+//    [criteriaCell.criteriaTextLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)]];
+    
     return criteriaCell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger row = indexPath.row;
+    
+//    CriteriaTableViewCell *currentCell = [self.criteriaListTableView cellForRowAtIndexPath:indexPath];
+//    NSAttributedString *text = currentCell.criteriaTextLabel.attributedText;
+//    NSRange *range = [currentCell selec]
+//    NSDictionary *atributes = [text attributesAtIndex:<#(NSUInteger)#> effectiveRange:<#(nullable NSRangePointer)#>];
+//    NSLog(text);
+    
+//    OptionsListViewController *listVC = [[UIStoryboard storyboardWithName:@"OptionsList" bundle:nil] instantiateViewControllerWithIdentifier:@"optionsListViewController"];
+//    [listVC setOptionsList:self.criteriaList[row][VARIABLE_STRING][@"$1"][VALUES_STRING]];
+//
+//    [self.navigationController pushViewController:listVC animated:YES];
+    
+    
+    SetParameterViewController *indicatorPage = [[UIStoryboard storyboardWithName:@"SetParameter" bundle:nil] instantiateViewControllerWithIdentifier:@"setParameterViewController"];
+    [indicatorPage setIndicatorData:self.criteriaList[row][VARIABLE_STRING][@"$1"]];
+
+    [self.navigationController pushViewController:indicatorPage animated:YES];
+}
+
+#pragma mark
 
 -(NSAttributedString *) getTextForRow:(NSInteger)row andString:(NSString *)variableString{
     NSArray *variableList = [self.criteriaList[row][VARIABLE] allKeys];
@@ -103,9 +135,14 @@
         if (!resultString) {
             resultString = [[NSMutableAttributedString alloc] initWithString:variableString];
         }
+        
+        NSDictionary *linkAttributes = @{ NSForegroundColorAttributeName : [UIColor colorWithRed:0.05 green:0.4 blue:0.65 alpha:1.0],
+                                          NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle), @"variable" : variable };
+        
         NSRange range = [resultString.mutableString rangeOfString:variable];
         [resultString replaceCharactersInRange:range withString:value];
-        [resultString addAttribute: NSForegroundColorAttributeName value:[UIColor blueColor] range:[resultString.mutableString rangeOfString:value]];
+        [resultString addAttributes: linkAttributes range:[resultString.mutableString rangeOfString:value]];
+        
     }
     return resultString;
 }
@@ -120,5 +157,26 @@
     }
     return nil;
 }
+
+- (void)handleTapOnLabel:(UITapGestureRecognizer *)tapGesture{
+    
+}
+//- (void)handleTapOnLabel:(UITapGestureRecognizer *)tapGesture{
+//    CGPoint locationOfTouchInLabel = [tapGesture locationInView:tapGesture.view];
+//    CGSize labelSize = tapGesture.view.bounds.size;
+//    CGRect textBoundingBox = [self.layoutManager usedRectForTextContainer:self.textContainer];
+//    CGPoint textContainerOffset = CGPointMake((labelSize.width - textBoundingBox.size.width) * 0.5 - textBoundingBox.origin.x,
+//                                              (labelSize.height - textBoundingBox.size.height) * 0.5 - textBoundingBox.origin.y);
+//    CGPoint locationOfTouchInTextContainer = CGPointMake(locationOfTouchInLabel.x - textContainerOffset.x,
+//                                                         locationOfTouchInLabel.y - textContainerOffset.y);
+//    NSInteger indexOfCharacter = [self.layoutManager characterIndexForPoint:locationOfTouchInTextContainer
+//                                                            inTextContainer:self.textContainer
+//                                   fractionOfDistanceBetweenInsertionPoints:nil];
+//    NSRange linkRange = NSMakeRange(14, 4); // it's better to save the range somewhere when it was originally used for marking link in attributed string
+//    if (NSLocationInRange(indexOfCharacter, linkRange)) {
+//        // Open an URL, or handle the tap on the link in any other way
+//        NSLog(@"link clicked: %@",linkRange);
+//    }
+//}
 
 @end

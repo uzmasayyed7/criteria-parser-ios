@@ -40,4 +40,6 @@
 //UIColor
 #define BACKGROUND_COLOR_HEX @""
 
+#define SET_PARAMETERS @"Set Parameters"
+
 #endif /* Constants_h */

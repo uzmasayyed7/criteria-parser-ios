@@ -16,6 +16,11 @@
 		84BFF4CA23B364A700F7B5BB /* IndividualScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF4C923B364A700F7B5BB /* IndividualScan.storyboard */; };
 		84BFF4CD23B3650C00F7B5BB /* IndividualScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFF4CC23B3650C00F7B5BB /* IndividualScanViewController.m */; };
 		84BFF4D023B4834500F7B5BB /* CriteriaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFF4CF23B4834500F7B5BB /* CriteriaTableViewCell.m */; };
+		84BFF4D423B5E84500F7B5BB /* OptionsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF4D323B5E84500F7B5BB /* OptionsList.storyboard */; };
+		84BFF4D723B5E89F00F7B5BB /* OptionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFF4D623B5E89F00F7B5BB /* OptionsTableViewCell.m */; };
+		84BFF4DA23B5E8C700F7B5BB /* OptionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFF4D923B5E8C700F7B5BB /* OptionsListViewController.m */; };
+		84BFF4DC23B5ECF000F7B5BB /* SetParameter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF4DB23B5ECF000F7B5BB /* SetParameter.storyboard */; };
+		84BFF4DF23B5F35500F7B5BB /* SetParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFF4DE23B5F35500F7B5BB /* SetParameterViewController.m */; };
 		84DFFACD23ACE66E008861D6 /* CriteriaParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFFACC23ACE66E008861D6 /* CriteriaParserTests.m */; };
 		84DFFAD823ACE66E008861D6 /* CriteriaParserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFFAD723ACE66E008861D6 /* CriteriaParserUITests.m */; };
 		84DFFB4A23B08E8B008861D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DFFB4023B08E8B008861D6 /* Assets.xcassets */; };
@@ -57,6 +62,14 @@
 		84BFF4CC23B3650C00F7B5BB /* IndividualScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndividualScanViewController.m; sourceTree = "<group>"; };
 		84BFF4CE23B4834500F7B5BB /* CriteriaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CriteriaTableViewCell.h; sourceTree = "<group>"; };
 		84BFF4CF23B4834500F7B5BB /* CriteriaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriteriaTableViewCell.m; sourceTree = "<group>"; };
+		84BFF4D323B5E84500F7B5BB /* OptionsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OptionsList.storyboard; sourceTree = "<group>"; };
+		84BFF4D523B5E89F00F7B5BB /* OptionsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewCell.h; sourceTree = "<group>"; };
+		84BFF4D623B5E89F00F7B5BB /* OptionsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewCell.m; sourceTree = "<group>"; };
+		84BFF4D823B5E8C700F7B5BB /* OptionsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsListViewController.h; sourceTree = "<group>"; };
+		84BFF4D923B5E8C700F7B5BB /* OptionsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsListViewController.m; sourceTree = "<group>"; };
+		84BFF4DB23B5ECF000F7B5BB /* SetParameter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetParameter.storyboard; sourceTree = "<group>"; };
+		84BFF4DD23B5F35500F7B5BB /* SetParameterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetParameterViewController.h; sourceTree = "<group>"; };
+		84BFF4DE23B5F35500F7B5BB /* SetParameterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetParameterViewController.m; sourceTree = "<group>"; };
 		84DFFAAD23ACE66B008861D6 /* CriteriaParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CriteriaParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DFFAC823ACE66E008861D6 /* CriteriaParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CriteriaParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DFFACC23ACE66E008861D6 /* CriteriaParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriteriaParserTests.m; sourceTree = "<group>"; };
@@ -152,6 +165,8 @@
 				84AA08F823B0B7CF0062B6E2 /* LaunchScreen.storyboard */,
 				84AA08F623B0B7CF0062B6E2 /* Home.storyboard */,
 				84BFF4C923B364A700F7B5BB /* IndividualScan.storyboard */,
+				84BFF4D323B5E84500F7B5BB /* OptionsList.storyboard */,
+				84BFF4DB23B5ECF000F7B5BB /* SetParameter.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -181,6 +196,12 @@
 				84BFF4CC23B3650C00F7B5BB /* IndividualScanViewController.m */,
 				84BFF4CE23B4834500F7B5BB /* CriteriaTableViewCell.h */,
 				84BFF4CF23B4834500F7B5BB /* CriteriaTableViewCell.m */,
+				84BFF4D523B5E89F00F7B5BB /* OptionsTableViewCell.h */,
+				84BFF4D623B5E89F00F7B5BB /* OptionsTableViewCell.m */,
+				84BFF4D823B5E8C700F7B5BB /* OptionsListViewController.h */,
+				84BFF4D923B5E8C700F7B5BB /* OptionsListViewController.m */,
+				84BFF4DD23B5F35500F7B5BB /* SetParameterViewController.h */,
+				84BFF4DE23B5F35500F7B5BB /* SetParameterViewController.m */,
 			);
 			path = ViewControllerAndCells;
 			sourceTree = "<group>";
@@ -299,8 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BFF4C423B1F2CE00F7B5BB /* Info.plist in Resources */,
+				84BFF4D423B5E84500F7B5BB /* OptionsList.storyboard in Resources */,
 				84BFF48123B0E98800F7B5BB /* LaunchScreen.storyboard in Resources */,
 				84BFF4CA23B364A700F7B5BB /* IndividualScan.storyboard in Resources */,
+				84BFF4DC23B5ECF000F7B5BB /* SetParameter.storyboard in Resources */,
 				84AA08FA23B0B7CF0062B6E2 /* Home.storyboard in Resources */,
 				84DFFB4A23B08E8B008861D6 /* Assets.xcassets in Resources */,
 			);
@@ -332,9 +355,12 @@
 				84DFFB4B23B08E8B008861D6 /* SceneDelegate.m in Sources */,
 				84BFF4CD23B3650C00F7B5BB /* IndividualScanViewController.m in Sources */,
 				84AA090423B0C4AF0062B6E2 /* NetworkHelper.m in Sources */,
+				84BFF4DA23B5E8C700F7B5BB /* OptionsListViewController.m in Sources */,
+				84BFF4DF23B5F35500F7B5BB /* SetParameterViewController.m in Sources */,
 				84AA090123B0C21D0062B6E2 /* ScanTableViewCell.m in Sources */,
 				84DFFB4D23B08E8B008861D6 /* AppDelegate.m in Sources */,
 				84AA08FE23B0B8E60062B6E2 /* HomeViewController.m in Sources */,
+				84BFF4D723B5E89F00F7B5BB /* OptionsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
