@@ -42,4 +42,6 @@
 
 #define SET_PARAMETERS @"Set Parameters"
 
+#define WAIT_MESSAGE_STRING @"Fetching data from network ....."
+
 #endif /* Constants_h */

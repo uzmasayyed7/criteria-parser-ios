@@ -90,6 +90,12 @@
         scanCell = [[ScanTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"scanTableViewCell"];
     }
     
+    if (!self.configData) {
+        [[scanCell nameLabel] setText:WAIT_MESSAGE_STRING];
+        [[scanCell tagLabel] setText:@""];
+        return scanCell;
+    }
+    
     [[scanCell nameLabel] setText:self.configData[row][NAME_STRING]];
     [[scanCell tagLabel] setText:self.configData[row][TAG_STRING]];
     if ([self.configData[row][COLOR_STRING] isEqualToString:RED]) {
