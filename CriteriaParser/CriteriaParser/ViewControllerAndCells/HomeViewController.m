@@ -20,12 +20,14 @@
 @implementation HomeViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    //Get config data
-    [self refresh];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Get config data
+    [self refresh];
     
     //Set table view delegate
     self.scansTableView.delegate = self;
